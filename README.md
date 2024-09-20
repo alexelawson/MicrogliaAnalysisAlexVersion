@@ -1,4 +1,6 @@
 # MicrogliaAnalysisAlexVersion
+CURRENTLY IN DRAFT FORM. 
+
 This is a package of code based on the Ciernia Lab MicrogliaMorphology: https://github.com/ciernialab/MicrogliaMorphology
 
 Alex Lawson has edited to use for the purposes of Microglia analysis in embryo's.
