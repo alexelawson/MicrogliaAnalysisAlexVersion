@@ -57,18 +57,12 @@ function imageConversion(img_name){
 	run("8-bit");
 	//convert to grayscale 
 	run("Grays");
-	run("Brightness/Contrast...");
 	run("Enhance Contrast", "saturated=0.35");
-	run("Unsharp Mask...", "radius=3 mask=0.60");
-	run("Despeckle");
-	//run an auto threshold method (not necessarily linear)
-	//run("Auto Threshold", "method=MaxEntropy ignore_black white"); 
-	//OR run a set threshold (linear across all images)
-	setThreshold(30, 255, "raw");
+	//run an auto threshold method
+	run("Auto Threshold", "method=Default ignore_black white"); 
 	setOption("BlackBackground", true);
 	run("Convert to Mask");
-	//replaces a bright or dark outlier pixel by the median of the pixels in the surrounding area
-	//area is set as a radius of 2, threshold set to define an outlier as anything >50% different
+	//replaces a bright or dark outlier pixel by the median of the pixels in the surrounding area	//area is set as a radius of 2, threshold set to define an outlier as anything >50% different
 	run("Remove Outliers...", "radius=2 threshold=50 which=Bright");
 	//Removes any cells below 600pix area using the white cell mask we created earlier
 	run("Analyze Particles...", "size=600-Infinity pixel show=[Masks]");
@@ -87,7 +81,8 @@ function multipleBinaryConversion(input, output, filename){
     img_name=getTitle();
 	dirCropOutput=output;
 	imageConversion(img_name);
-	saveAs("Tiff", dirCropOutput+ img_name);			
+	notiff = replace(img_name, ".tif", "");
+	saveAs("Tiff", dirCropOutput+ notiff);			
 	selectWindow(img_name);
 	run("Close");
     }
