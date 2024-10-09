@@ -5,6 +5,8 @@
  * Then goes through and zooms into the ROI's one by one, asking for user input
  */
  
+//next slide: n=2, s06 175
+ 
 //MAIN PROGRAM
 		binaryDataArray = openBinary(); //open the binary image 
 		number = binaryDataArray[0];

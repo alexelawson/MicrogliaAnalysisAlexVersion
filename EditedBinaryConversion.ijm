@@ -14,9 +14,6 @@ if (userInputChoice==true){ //if user only wants to open one image
 	singleBinaryConversion();
 }
 else{ //if user wants to open multiple images 
-	Dialog.create("ImageOpener");
-	Dialog.addMessage("Open the folder with images you want to convert to binary.");
-	Dialog.show();
 	
 	//opens the file browser for user to choose a directory with images 
 	setOption("JFileChooser",true);
@@ -36,6 +33,7 @@ else{ //if user wants to open multiple images
 Dialog.create("End of Program");
 Dialog.addMessage("Program completed. \n If you processed a folder with images they should be saved in your selected directory. \n If you only processed 1 image, the program DID NOT save the image and you can do so now.");
 Dialog.show();
+
 
 /*
  * Function to convert an image into binary 
@@ -57,11 +55,17 @@ function imageConversion(img_name){
 	run("8-bit");
 	//convert to grayscale 
 	run("Grays");
+	run("Brightness/Contrast...");
 	run("Enhance Contrast", "saturated=0.35");
-	//run an auto threshold method
-	run("Auto Threshold", "method=Default ignore_black white"); 
+	run("Apply LUT");
+	//threshold set to retain the most possible microglia, without adding detail where there is none
+	//autothresholds could also be used, but as we are manually editing the data, we wanted to include
+	//rather than exclude sections
+	setThreshold(50, 255);	
+//	run("Auto Threshold", "method=Default ignore_black white");
+	run("Despeckle");
 	setOption("BlackBackground", true);
-	run("Convert to Mask");
+	run("Convert to Mask", "method=Default background=Dark dark");
 	//replaces a bright or dark outlier pixel by the median of the pixels in the surrounding area	//area is set as a radius of 2, threshold set to define an outlier as anything >50% different
 	run("Remove Outliers...", "radius=2 threshold=50 which=Bright");
 	//Removes any cells below 600pix area using the white cell mask we created earlier
