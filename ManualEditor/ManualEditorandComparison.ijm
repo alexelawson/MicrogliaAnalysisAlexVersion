@@ -3,9 +3,8 @@
  * Prompts the user to open two images
  * Creates an ROI around each cell of interest based upon the binary image 
  * Then goes through and zooms into the ROI's one by one, asking for user input
+ * s03,n=3, 273 
  */
- 
-//next slide: n=2, s06 175
  
 //MAIN PROGRAM
 		binaryDataArray = openBinary(); //open the binary image 
@@ -163,4 +162,6 @@ function zoom(imageIDBinary, imageIDGB, index) {
 	selectImage(imageIDGB);
 	roiManager("Select", index);
 	run("To Selection");
+	selectImage(imageIDGB);
+	roiManager("select", 1);
 }
