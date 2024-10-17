@@ -72,8 +72,11 @@ function roiIterator(number, selectedArray, binaryImageID, originalImageID){
 		//	Array.print(selectedArray);
 			}
 		if (numberString != "ROI"){
-			if (isNaN(parseInt(numberString))){ //invalid input 
-				Dialog.create("Erorr. Invalid ROI entered.");
+			if (numberString == "f"){
+				
+			}
+			else if (isNaN(parseInt(numberString))){ //invalid input 
+				Dialog.create("Error. Invalid ROI entered.");
 				Dialog.addMessage("The program will jump to the next ROI which is: " + (toString(i+2)));
 				Dialog.show();
 			}
