@@ -1,6 +1,6 @@
 /*
  * ImageJ Macro to take an RGB image (or folder with RGB images) and convert them to binary. 
- * Currently with a pre-set threshold: 30, 255
+ * Currently with a pre-set threshold: 50, 255
  * Created by Alex Lawson 
  */
  
@@ -62,7 +62,6 @@ function imageConversion(img_name){
 	//autothresholds could also be used, but as we are manually editing the data, we wanted to include
 	//rather than exclude sections
 	setThreshold(50, 255);	
-//	run("Auto Threshold", "method=Default ignore_black white");
 	run("Despeckle");
 	setOption("BlackBackground", true);
 	run("Convert to Mask", "method=Default background=Dark dark");
