@@ -2,6 +2,9 @@
  * ImageJ Macro to take a parent folder with subfolders of RGB images, convert each image to binary, 
  * and save the result in a corresponding output folder structure.
  * Created by Alex Lawson and modified to handle nested folder structures.
+ * Hypothalamus: 50/255
+ * AVP: 68/255
+ * POMC: 78/255
  */
  
 Dialog.create("Choice");
@@ -67,7 +70,7 @@ function imageConversion(img_name) {
     run("Brightness/Contrast...");
     run("Enhance Contrast", "saturated=0.35");
     run("Apply LUT");
-    setThreshold(68, 255);    
+    setThreshold(78, 255);    
     run("Despeckle");
     setOption("BlackBackground", true);
     run("Convert to Mask", "method=Default background=Dark dark");
