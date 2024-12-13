@@ -13,6 +13,7 @@ function skeleton(input, output, output2, filename) {
 	      // SKELETON ANALYSIS !!
 	      // Skeletonize your thresholded image
 	      // this process basically systematically cuts down your thresholded processes from all sides into one single trace
+	      run("Close-");
 	      run("Skeletonize (2D/3D)");
 	      // run the AnalyzeSkeleton(2D/3D) plugin 
 	      // this plugin will take your skeletonized cells and tag them with useful information (junctions, length, triple/quadruple points, etc.)
